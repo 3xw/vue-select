@@ -309,10 +309,10 @@
 </style>
 
 <template>
-  <div :dir="dir" class="dropdown v-select" :class="dropdownClasses">
-    <div ref="toggle" @mousedown.prevent="toggleDropdown" :class="['dropdown-toggle', 'clearfix']">
+  <div :dir="dir" @mousedown.prevent="toggleDropdown" class="dropdown v-select" :class="dropdownClasses">
+    <div ref="toggle" :class="['dropdown-toggle', 'clearfix']">
 
-      <span class="selected-tag" v-for="option in valueAsArray" v-bind:key="option.index">
+      <span class="selected-tag" @click="toggleIfSingle" v-for="option in valueAsArray" v-bind:key="option.index">
         <slot name="selected-option" v-bind="option">
           {{ getOptionLabel(option) }}
         </slot>
@@ -343,13 +343,13 @@
               aria-label="Search for option"
       >
 
-      <button 
-        v-show="showClearButton" 
-        :disabled="disabled" 
+      <button
+        v-show="showClearButton"
+        :disabled="disabled"
         @click="clearSelection"
-        type="button" 
-        class="clear" 
-        title="Clear selection" 
+        type="button"
+        class="clear"
+        title="Clear selection"
       >
         <span aria-hidden="true">&times;</span>
       </button>
@@ -786,6 +786,12 @@
               this.$refs.search.focus()
             }
           }
+        }
+      },
+
+      toggleIfSingle(e) {
+        if( !this.multiple ){
+          this.$refs.search.focus()
         }
       },
 
