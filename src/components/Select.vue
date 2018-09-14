@@ -339,7 +339,6 @@
                 @keydown.up.prevent="typeAheadUp"
                 @keydown.down.prevent="typeAheadDown"
                 @keydown.enter.prevent="typeAheadSelect"
-                @keydown.tab="onTab"
                 @blur="onSearchBlur"
                 @focus="onSearchFocus"
                 type="search"
@@ -580,18 +579,6 @@
       },
 
       /**
-       * Select the current value if selectOnTab is enabled
-       */
-      onTab: {
-        type: Function,
-        default: function () {
-          if (this.selectOnTab) {
-            this.typeAheadSelect();
-          }
-        },
-      },
-
-      /**
        * Enable/disable creating options from searchInput.
        * @type {Boolean}
        */
@@ -723,14 +710,6 @@
         type: String,
         default: 'auto'
       },
-      /**
-       * When true, hitting the 'tab' key will select the current select value
-       * @type {Boolean}
-       */
-      selectOnTab: {
-        type: Boolean,
-        default: false
-      }
     },
 
     data() {
