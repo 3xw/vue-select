@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import vSelect from 'vue-select'
+import vSelect from '../../src/components/Select'
 
 import './assets/scss/home.scss'
 
@@ -39,11 +39,6 @@ new Vue({
           url: 'https://codepen.io/collection/nrkgxV/'
         },
       ]
-    }
-  },
-  methods: {
-    redirect(option) {
-      window.location = option.url;
     }
   }
 });
