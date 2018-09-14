@@ -312,17 +312,14 @@
   <div :dir="dir" class="dropdown v-select" :class="dropdownClasses">
     <div ref="toggle" @mousedown.prevent="toggleDropdown" :class="['dropdown-toggle', 'clearfix']">
 
-      <slot v-for="option in valueAsArray" name="selected-option-container"
-            :option="option" :deselect="deselect">
-        <span class="selected-tag" v-bind:key="option.index">
-          <slot name="selected-option" v-bind="option">
-            {{ getOptionLabel(option) }}
-          </slot>
-          <button v-if="multiple" :disabled="disabled" @click="deselect(option)" type="button" class="close" aria-label="Remove option">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </span>
-    </slot>
+      <span class="selected-tag" v-for="option in valueAsArray" v-bind:key="option.index">
+        <slot name="selected-option" v-bind="option">
+          {{ getOptionLabel(option) }}
+        </slot>
+        <button v-if="multiple" :disabled="disabled" @click="deselect(option)" type="button" class="close" aria-label="Remove option">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </span>
 
       <input
               ref="search"
