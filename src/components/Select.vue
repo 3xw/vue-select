@@ -424,15 +424,6 @@
       },
 
       /**
-       * Can the user clear the selected property?
-       * @type {Boolean}
-       */
-      clearable: {
-        type: Boolean,
-        default: true
-      },
-
-      /**
        * Sets the max-height property on the dropdown list.
        * @deprecated
        * @type {String}
@@ -1062,7 +1053,7 @@
        * @return {Boolean}
        */
       showClearButton() {
-        return !this.multiple && this.clearable && !this.open && this.mutableValue != null
+        return !this.multiple && !this.open && this.mutableValue != null
       }
     },
 
